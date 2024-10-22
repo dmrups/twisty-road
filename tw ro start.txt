@@ -1,0 +1,23 @@
+﻿Console.WriteLine("Hello, traveler! Choose your class before starting an adventure.");
+Console.WriteLine(" ");
+Console.WriteLine("1. Warrior, the one with a sword.");
+Console.WriteLine("2. Archer who armed with a bow and suspicious amount of arrows.");
+Console.WriteLine("3. Mage, master of mystic forces");
+Console.WriteLine("4. Bard, who has a lyre and high hopes for future. Also he carries a dagger.");
+
+
+
+
+// Битва
+// Развилка
+// Нейтральная зона
+// Фонтан/ Родник/ Зона отдыха
+// Загадки
+
+
+The day was overcast—no rain, no sun. You walked down the dusty road, each step grounding you in the present. A shabby sword hung at your side, its handle worn from use. There were no worries in your head, just the journey ahead and the promise of adventure waiting to unfold.
+Вот к чему приводят мечты о геройстве. Тычок в спину, ни слова на прощание и вот, ты на дороге. Ты здесь впервые, но правила известны любому ребёнку. Думай головой и следи в оба, всё остальное решаемо с помощь верного меча в потёртой перевязи. 
+This is what dreams of heroism lead to. A push in the back, no words of farwell, and there you are — on the road. It’s your first time here, but the rules are known to every child: think clearly and watch your surroundings. Everything else can be solved with a trusty sword at your side.
+This is what dreams of heroism lead to. A push in the back, no words of farwell, and there you are — on the road. It’s your first time here, but the rules are known to every child: There is no problem that cannot be solved with a well-timed arrow.
+"Не стоило столько пить вчера." мысль, которая посещает любого, страдающего от похмелья. Ну что же, перед вами дорога, пить действительно не стоило.
+"Maybe I shouldn’t have drunk so much yesterday." A thought that crosses the mind of anyone suffering from a hangover. Well, here you are on the road, and indeed, drinking wasn’t worth it.

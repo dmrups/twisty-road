@@ -3,8 +3,11 @@
 public enum EventType
 {
     Start,
+    ClassChoice,
+    RoadStart,
     Finish,
     Fight,
     Explore,
-    Dialog
+    Dialog,
+    Gamend
 }
