@@ -17,7 +17,7 @@ Event[] story =
         "1. Warrior, the one with a sword.\n"+
         "2. Archer who armed with a bow and suspicious amount of arrows.\n"+
         "3. Mage, master of mystic forces.\n"+
-        "4. Bard, who has a lyre and high hopes for future. He also carries a dagger.\n",
+        "4. Bard, with a lyre and high hopes for future. He also carries a dagger.\n",
     },
     new Event
     {
@@ -26,11 +26,28 @@ Event[] story =
     },
     new Event
     {
+        Type = EventType.Fight,
+        Name = "Battle",
+        Enemy = new Character
+        {
+            Name = "Wild boar",
+            Attack = 3,
+            Defence = 4,
+            Health = 15,
+        },
+        Text = "You don't have to wait for long until first enemy showed up.{0}"
+
+    },
+    new Event
+    {
         Type = EventType.Finish,
         Name = "Closing",
         Text = "{0} died"
     }
+
 ];
+
+Context gameContext = new();
 
 Character mainCharacter = new();
 TwistyRoad.EventHandler handler = new();
@@ -40,30 +57,33 @@ foreach (Event e in story)
     if (mainCharacter.Health > 0)
     {
         handler.HandleGamend(e, mainCharacter);
-        
+
     }
     switch (e.Type)
     {
-        case EventType.Start: 
+        case EventType.Start:
             handler.HandleStart(e, mainCharacter);
             break;
         case EventType.ClassChoice:
             handler.HandleClassChoice(e, mainCharacter);
-            break;  
-        case EventType.Finish: 
+            break;
+        case EventType.Finish:
             handler.HandleFinish(e, mainCharacter);
             break;
-        case EventType.Fight: 
+        case EventType.Fight:
             handler.HandleFight(e, mainCharacter);
             break;
-        case EventType.Explore: 
+        case EventType.Explore:
             handler.HandleExplore(e, mainCharacter);
             break;
-        case EventType.Dialog: 
+        case EventType.Dialog:
             handler.HandleDialog(e, mainCharacter);
             break;
         case EventType.Gamend:
             handler.HandleGamend(e, mainCharacter);
+            break;
+        case EventType.ContextFight:
+            handler.HandleContextFight(e, mainCharacter, gameContext);
             break;
     }
 }

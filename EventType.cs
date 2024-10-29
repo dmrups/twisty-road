@@ -9,5 +9,6 @@ public enum EventType
     Fight,
     Explore,
     Dialog,
-    Gamend
+    Gamend,
+    ContextFight
 }
