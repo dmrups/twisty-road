@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using TwistyRoad.Scenarious;
 
 namespace TwistyRoad;
 internal class EventHandler
@@ -156,8 +155,52 @@ internal class EventHandler
     {
         Console.WriteLine(e.Text);
         string playerInput;
+        string address = character.Class.ToString();
 
-        if (character.Class == CharacterClass.Warrior)
+        while (Fontain.Scenario.TryGetValue(address, out Leaf leaf))
+        {
+            if (leaf == null)
+            {
+                break;
+            }
+
+            string text;
+
+            if (leaf.TextAction != null)
+            {
+                text = string.Format(leaf.Text, leaf.TextAction(character));
+            }
+            else
+            {
+                text = leaf.Text;
+            }
+
+            Console.WriteLine(text);
+            playerInput = Console.ReadLine();
+
+            if (leaf.ExitOption != null && leaf.ExitOption == playerInput)
+            {
+                address = "exit";
+            }
+            else
+            {
+                while (!Fontain.Scenario.ContainsKey(address + playerInput))
+                {
+                    Console.WriteLine("You missed the button");
+                    playerInput = Console.ReadLine();
+                }
+
+                address += playerInput;
+            }
+
+            if (leaf.CharacterAction != null)
+            {
+                leaf.CharacterAction(character);
+            }
+        }
+        /*
+
+            if (character.Class == CharacterClass.Warrior)
         {
 
 
@@ -224,7 +267,7 @@ internal class EventHandler
 
 
             }
-        }
+        }*/
     }
 
     public void HandleExplore(Event e, Character character)

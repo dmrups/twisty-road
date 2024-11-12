@@ -29,5 +29,9 @@ internal class Character
 
     public int MaxHealth { get; set; }
 
+    public void RestoreHealth()
+    {
+        _health = MaxHealth;
+    }
 }
 
