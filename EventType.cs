@@ -7,6 +7,7 @@ public enum EventType
     RoadStart,
     Finish,
     Fight,
+    Fontain,
     Explore,
     Dialog,
     Gamend,

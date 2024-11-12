@@ -33,11 +33,20 @@ Event[] story =
             Name = "Wild boar",
             Attack = 3,
             Defence = 4,
-            Health = 15,
+            MaxHealth = 15,
+            Health = 15
         },
         Text = "You don't have to wait for long until first enemy showed up.{0}"
 
     },
+
+    new Event
+    {
+        Type = EventType.Fontain,
+        Name = "Spring",
+        Text = "\n\nAs you progress further, you stumble upon a strange structure. Upon closer inspection you recognise a Fontain."
+    },
+
     new Event
     {
         Type = EventType.Finish,
@@ -72,6 +81,9 @@ foreach (Event e in story)
             break;
         case EventType.Fight:
             handler.HandleFight(e, mainCharacter);
+            break;
+        case EventType.Fontain:
+            handler.HandleFontain(e, mainCharacter);
             break;
         case EventType.Explore:
             handler.HandleExplore(e, mainCharacter);
