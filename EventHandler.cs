@@ -159,11 +159,6 @@ internal class EventHandler
 
         while (Fontain.Scenario.TryGetValue(address, out Leaf leaf))
         {
-            if (leaf == null)
-            {
-                break;
-            }
-
             string text;
 
             if (leaf.TextAction != null)
@@ -176,98 +171,29 @@ internal class EventHandler
             }
 
             Console.WriteLine(text);
+
+            if (leaf.DialogExit)
+            {
+                break;
+            }
+
             playerInput = Console.ReadLine();
 
-            if (leaf.ExitOption != null && leaf.ExitOption == playerInput)
-            {
-                address = "exit";
-            }
-            else
-            {
-                while (!Fontain.Scenario.ContainsKey(address + playerInput))
-                {
-                    Console.WriteLine("You missed the button");
-                    playerInput = Console.ReadLine();
-                }
 
-                address += playerInput;
+            while (!Fontain.Scenario.ContainsKey(address + playerInput))
+            {
+                Console.WriteLine("You missed the button");
+                playerInput = Console.ReadLine();
             }
+
+            address += playerInput;
 
             if (leaf.CharacterAction != null)
             {
                 leaf.CharacterAction(character);
             }
         }
-        /*
 
-            if (character.Class == CharacterClass.Warrior)
-        {
-
-
-            Console.WriteLine("\n\n1.Look around. There may be something dangerous nearby.\n2.Come closer and drink some water.\n3.Kneel and offer prayers.\n4.Ignore and proceed.");
-            playerInput = Console.ReadLine();
-
-
-
-
-            if (playerInput == "1")
-            {
-                Console.WriteLine("You look around but everething seems pretty safe.\n1.Drink from fontain.\n2.Kneel and offer prayers.\n3.Ignore and proceed.");
-                playerInput = Console.ReadLine();
-
-                if (playerInput == "1")
-                {
-                    Console.WriteLine($"Water is cold and tasty. It fills you with vigor. You feel healed.\n You restored {character.MaxHealth - character.Health} health.\n1.Kneel and offer prayers.\n2.Walk forth.");
-                    playerInput = Console.ReadLine();
-                    character.Health = character.MaxHealth;
-
-                    if (playerInput == "1")
-                    {
-                        Console.WriteLine("You prayed for half an hour, but still did not catch a response, nevertheless, the time was well spent thought.\n Anyway you have nothing left to do in this place, so you continue your jorney.");
-                    }
-                    if (playerInput == "2")
-                    {
-                        Console.WriteLine("You left place with fontain, to continue your jorney.");
-                    }
-                }
-
-                else if (playerInput == "2")
-                {
-                    Console.WriteLine($"Water is cold and tasty. It fills you with vigor. You feel healed.\\n You restored {character.MaxHealth - character.Health} health\n\n1.Kneel and offer prayers.\n2.Ignore and proceed.");
-                    playerInput = Console.ReadLine();
-
-                    if (playerInput == "1")
-                    {
-                        Console.WriteLine("You prayed for half an hour, but still did not catch a response, nevertheless, the time was well spent thought.\n Anyway you have nothing left to do in this place, so you continue your jorney.");
-                    }
-
-                    if (playerInput == "2")
-                    {
-                        Console.WriteLine("You left place with fontain, to continue your jorney.");
-                    }
-                }
-
-                else if (playerInput == "3")
-                {
-                    Console.WriteLine($"You kneel before a fountain and pray.\n\n1.Drink some water.\n2.Ignore and proceed.");
-                    playerInput = Console.ReadLine();
-
-                    if (playerInput == "1")
-                    {
-                        Console.WriteLine("You prayed for half an hour, but still did not catch a response, nevertheless, the time was well spent thought.\n Anyway you have nothing left to do in this place, so you continue your jorney.");
-                    }
-
-                    if (playerInput == "2")
-                    {
-                        Console.WriteLine("You left place with fontain, to continue your jorney.");
-                    }
-                }
-
-
-
-
-            }
-        }*/
     }
 
     public void HandleExplore(Event e, Character character)

@@ -1,4 +1,6 @@
-﻿namespace TwistyRoad.Scenarious;
+﻿using System.Globalization;
+
+namespace TwistyRoad.Scenarious;
 internal class Leaf
 {
     public string Text { get; set; }
@@ -8,4 +10,6 @@ internal class Leaf
     public Func<Character, string> TextAction { get; set; }
 
     public string ExitOption { get; set; }
+
+    public bool DialogExit { get; set; }
 }

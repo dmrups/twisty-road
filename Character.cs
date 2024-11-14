@@ -9,6 +9,7 @@ internal class Character
 
     public int Attack { get; set; }
 
+
     public int Defence { get; set; }
 
     public int Health
@@ -33,5 +34,12 @@ internal class Character
     {
         _health = MaxHealth;
     }
+
+    public void PrayerBuff()
+    {
+        Attack = Attack + 1;
+        Defence = Defence + 1;  
+    }
+        
 }
 
